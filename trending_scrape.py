@@ -30,6 +30,11 @@ def get_trending():
     return results
 
 if __name__ == "__main__":
-    data = get_trending()
     import json
-    print(json.dumps(data, indent=2))
+    from datetime import datetime
+    data = get_trending()
+    ts = datetime.now().strftime("%Y-%m-%d_%H%M%S")
+    out = f"/config/byron/projects/trending_{ts}.json"
+    with open(out, "w") as f:
+        json.dump(data, f, indent=2)
+    print(f"Saved {len(data)} repos to {out}")
