@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import requests
-from bs4 import BeautifulSoup
 import sys
+from datetime import datetime, timedelta
 sys.path.insert(0, "/config/byron/projects/dev_tools")
 from simple_logger import log
 
@@ -10,8 +10,9 @@ def get_trending():
     # api.github.com is more reliable than scraping the HTML page.
     # Search recently updated repos sorted by stars as a trending proxy.
     url = 'https://api.github.com/search/repositories'
+    cutoff = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
     params = {
-        'q': 'pushed:>2026-10-27',
+        'q': f'pushed:>{cutoff}',
         'sort': 'stars',
         'order': 'desc',
         'per_page': '10',
