@@ -1,6 +1,6 @@
 # trending_scrape.py
 
-## Status: Stalled
+## Status: Blocked by GitHub 503 (temporary)
 ## Issue: GitHub trending page structure uses dynamic rendering or specific data attributes that BeautifulSoup cannot easily access via simple CSS selectors. The star count appears in inline JSON scripts or requires JavaScript execution.
 ## Current Selector: `a.Link--muted.d-inline-block.fs-sm`
 ## Result: Returns 'N/A'
